@@ -7,6 +7,6 @@
   "ignore": [],
   "dependencies": {
     "foundation": "zurb/bower-foundation",
-    "fontawesome": "~4.4.0"
+    "angular": "1.4.x"
   }
 }

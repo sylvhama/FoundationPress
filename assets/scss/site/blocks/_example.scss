@@ -1,0 +1,8 @@
+.example {
+  @include element('text') {
+    color: $color-black;
+    @include modifier('white') {
+      color: $color-white;
+    }
+  }
+}

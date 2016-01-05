@@ -1,12 +1,8 @@
-/*
- Global styles for FoundationPress
- Demo: http://foundationpress.olefredrik.com
-*/
-
 // Prettify type rendering
 body {
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
+  min-width: 300px;
 }
 
 // Reset margin and padding on figure element
@@ -38,13 +34,71 @@ figcaption {
 	margin-right: auto;
 }
 
+//text color classes
+.error-text {
+  color: $alert-color;
+}
+.success-text {
+  color: $success-color;
+}
+.white-text {
+  color: $color-white;
+}
+.black-text {
+  color: $color-black;
+}
+
+.underline-link {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.hover-underline-link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+//usefull classes
+.larger-text {
+  font-size: larger;
+}
+
 .full-width {
    width: 100%;
    margin-left: auto;
    margin-right: auto;
-   max-width: initial;
+   max-width: none;
 }
 
+.full-height {
+  height: 100%;
+}
+
+.no-overflow {
+  overflow: hidden;
+}
+
+.bg-cover {
+  @include bg-cover();
+}
+
+.bg-contain {
+  @include bg-contain();
+}
+
+.clear:before,
+.clear:after {
+  content: ".";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+.clear:after {clear: both;}
+
+//Made by Foundationpress
 blockquote.alignleft,
 img.alignleft {
 	margin: rem-calc(7) rem-calc(24) rem-calc(7) 0;
@@ -57,4 +111,36 @@ img.alignleft {
 blockquote.alignright,
 img.alignright {
 	margin: rem-calc(7) 0 rem-calc(7) rem-calc(24);
+}
+
+.content-not-ready {
+  display: none;
+}
+.content-ready {
+  display: block;
+}
+
+//To make sure all the content is border-box
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+//Example of special font for English texts
+/*div:lang(en), span:lang(en), h1:lang(en), h2:lang(en), h3:lang(en), h4:lang(en), h5:lang(en), h6:lang(en), p:lang(en), a:lang(en), li:lang(en) {
+  font-family: '';
+}*/
+
+//Normalization
+textarea {
+  resize: none;
+}
+
+form.ng-submitted {
+  select, input:not([type]), input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
+    &.ng-invalid {
+      border-color: $alert-color;
+    }
+  }
 }

@@ -1,0 +1,138 @@
+//Personalized grid
+.special-row {
+  @include grid-row();
+
+
+  .column-5 {
+    @include grid-column($columns:2.4);
+  }
+
+  .column-main {
+    @media #{$medium-up} {
+      @include grid-column($columns:8.222, $collapse:true);
+    }
+    @media #{$medium-only} {
+      padding: 0 rem-calc(10) 0 rem-calc(10);
+    }
+    @media #{$small-only} {
+      @include grid-column($columns:12);
+      padding: 0 rem-calc(10) 0 rem-calc(10);
+    }
+
+    &.main-bigger {
+      @media #{$medium-up} {
+        @include grid-column($columns:9.222, $collapse:true);
+      }
+
+      &.main-right {
+        @media #{$medium-up} {
+          @include grid-column($columns:9.222, $push:2.778, $collapse:true);
+        }
+      }
+    }
+
+    &.main-left, &.main-left.main-bigger {
+      @media #{$large-up} {
+        padding: 0 rem-calc(10) 0 0;
+      }
+      @media #{$medium-only} {
+        padding: 0 rem-calc(10) 0 rem-calc(10);
+      }
+    }
+
+    &.main-right, &.main-right.main-bigger {
+      @media #{$large-up} {
+        padding: 0 0 0 rem-calc(10);
+      }
+      @media #{$medium-only} {
+        padding: 0 rem-calc(10) 0 rem-calc(10);
+      }
+    }    
+  }
+
+  .column-sidebar {
+    @media #{$medium-up} {
+      @include grid-column($columns:3.778, $collapse:true);
+    }
+    @media #{$medium-only} {
+      padding: 0 rem-calc(10) 0 rem-calc(10);
+    }
+    @media #{$small-only} {
+      @include grid-column(12);
+      padding: 0 rem-calc(10) 0 rem-calc(10);
+    }
+
+    &.sidebar-smaller {
+      @media #{$medium-up} {
+        @include grid-column($columns:2.778, $collapse:true);
+      }
+
+      &.sidebar-left {
+        @media #{$medium-up} {
+          @include grid-column($columns:2.778, $pull:9.222, $collapse:true);
+        }
+      }
+    }
+
+    &.sidebar-left, &.sidebar-smaller.sidebar-left {
+      @media #{$large-up} {
+        padding: 0 rem-calc(10) 0 0;
+      }
+      @media #{$medium-only} {
+        padding: 0 rem-calc(10) 0 rem-calc(10);
+      }
+    }
+
+    &.sidebar-right, &.sidebar-smaller.sidebar-right {
+      @media #{$large-up} {
+        padding: 0 0 0 rem-calc(10);
+      }
+      @media #{$medium-only} {
+        padding: 0 rem-calc(10) 0 rem-calc(10);
+      }
+    }
+  }
+
+
+  .column-horizontal-sidebar {
+    @media #{$medium-up} {
+      @include grid-column($columns:4, $collapse:true);
+      padding: 0 rem-calc(10) 0 rem-calc(10);
+      &:last-child {
+        padding: 0 0 0 rem-calc(20);
+      }
+      &:first-child {
+        padding: 0 rem-calc(20) 0 0;
+      }
+    }
+    @media #{$small-only} {
+      @include grid-column($columns:12, $collapse:true);
+    }
+  }
+}
+
+//iPad portrait grid
+.row {
+  $class-slug: ipad-col;
+  @media #{$ipad-portrait-only} {
+    @for $i from 1 through $total-columns {
+      .#{$class-slug}-#{$i} {
+        @include grid-column($columns:$i);
+      }
+    }
+  }
+}
+
+.row.ipad-portrait-collapse {
+  &>.columns, &>.column {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.row.ipad-portrait-uncollapse {
+  &>.columns, &>.column {
+    padding-left: $column-gutter/2;
+    padding-right: $column-gutter/2;
+  }
+}

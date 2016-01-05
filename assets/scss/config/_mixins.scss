@@ -1,0 +1,120 @@
+/// Block Element
+/// @access public
+/// @param {String} $element - Element's name
+@mixin element($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+
+/// Block Modifier
+/// @access public
+/// @param {String} $modifier - Modifier's name
+@mixin modifier($modifier) {
+    &--#{$modifier} {
+        @content;
+    }
+}
+
+/* Example of BEM
+.block {
+    //CSS declarations for `.block` 
+
+    @include element('element') {
+        //CSS declarations for `.block__element`
+    }
+
+    @include modifier('modifier') {
+        //CSS declarations for `.block--modifier`
+
+        @include element('element') {
+            //CSS declarations for `.block--modifier__element`
+        }
+    }
+}*/
+
+
+//----------------------------------------------------------------
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes $animation-name {
+    @content;
+  }
+  @-moz-keyframes $animation-name {
+    @content;
+  }  
+  @-ms-keyframes $animation-name {
+    @content;
+  }
+  @-o-keyframes $animation-name {
+    @content;
+  }  
+  @keyframes $animation-name {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}
+
+/*Usage
+@include keyframes(slide-down) {
+  0% { opacity: 1; }
+  90% { opacity: 0; }
+}
+
+.element {
+  @include animation('slide-down 5s 3');
+}*/
+
+//----------------------------------------------------------------
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+/*Usage
+a {
+  color: gray;
+  @include transition(color .3s ease);
+  &:hover {
+    color: black;
+  }
+}*/
+
+//----------------------------------------------------------------
+
+@mixin bg-cover() {
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  background-position: center;
+}
+
+//----------------------------------------------------------------
+
+@mixin bg-contain() {
+  background-repeat: no-repeat;
+  background-size: contain;
+  -webkit-background-size: contain;
+  background-position: center;
+}
+
+//----------------------------------------------------------------
+
+@mixin vendor-prefix($name, $argument...) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}

@@ -1,10 +1,11 @@
 .DS_Store
 *.sass-cache*
 *.log
+npm-debug.*
 node_modules/
 assets/stylesheets/
 assets/components/
 assets/javascript/vendor/
 assets/javascript/foundation.js
-assets/javascript/custom/demosite.js
+assets/javascript/custom/fromcoffee.js
 packaged/
